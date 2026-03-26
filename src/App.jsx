@@ -2,11 +2,13 @@ import React from 'react'
 import {Routes,Route} from 'react-router-dom';
 import NavBar from "./Components/NavBar";
 import Header from './Components/Header';
+import Footer from './Components/Footer';
 function App() {
   return (
     <div>
       <NavBar/>
       <Header/>
+      <Footer/>
        <div className='page-container'>
       {/*<Routes>
         <Route path='/' element={<Photography/>}/>
