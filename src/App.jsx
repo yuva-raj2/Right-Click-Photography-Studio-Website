@@ -3,11 +3,15 @@ import {Routes,Route} from 'react-router-dom';
 import NavBar from "./Components/NavBar";
 import Header from './Components/Header';
 import Footer from './Components/Footer';
+import Information from './Components/Information';
+import MyBookComponent from './Components/MyBookComponent';
 function App() {
   return (
     <div>
       <NavBar/>
       <Header/>
+      <Information/>
+      <MyBookComponent/>
       <Footer/>
        <div className='page-container'>
       {/*<Routes>
