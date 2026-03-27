@@ -62,7 +62,7 @@ function MyBookComponent() {
   ========================= */
   const buildPhotos = useCallback((album) => {
     return Array.from({ length: album.count }, (_, i) =>
-      `/assets/${album.folder}/${album.prefix}-${i + 1}.png`
+      `/assets/${album.folder}/${album.prefix}-${i + 1}.jpg`
     );
   }, []);
 
@@ -70,7 +70,7 @@ function MyBookComponent() {
      OPEN ALBUM (single source)
   ========================= */
   const openAlbum = (album) => {
-    const cover = `/assets/${album.folder}/${album.prefix}-1.png`;
+    const cover = `/assets/${album.folder}/${album.prefix}-1.jpg`;
 
     setSelectedAlbum({
       ...album,
@@ -93,7 +93,7 @@ function MyBookComponent() {
       <div className="album-container">
 
         {albums.map((album) => {
-          const cover = `/assets/${album.folder}/${album.prefix}-1.png`;
+          const cover = `/assets/${album.folder}/${album.prefix}-1.jpg`;
 
           return (
             <article

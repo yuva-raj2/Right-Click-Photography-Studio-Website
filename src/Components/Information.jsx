@@ -54,7 +54,7 @@ function Information() {
         {/* LEFT IMAGE */}
         <div className="info-image">
           <img
-            src="/assets/piotr-lynch_80.png"
+            src="/assets/Bharatanatyam/Bharatanatyam-Girl.jpg"
             alt="Bharatanatyam dance photography performance captured by Right Click Studio"
             loading="lazy"
             decoding="async"
