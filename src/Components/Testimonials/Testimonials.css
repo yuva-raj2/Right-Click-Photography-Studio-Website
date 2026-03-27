@@ -1,0 +1,515 @@
+/* =========================
+   VARIABLES
+========================= */
+:root {
+  --bg-dark: #0f0f1a;
+  --bg-card: rgba(255, 255, 255, 0.08);
+  --bg-card-hover: rgba(255, 255, 255, 0.12);
+  --text-light: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.85);
+  --accent: #f5d27a;
+  --accent-hover: #e6c06b;
+  --whatsapp: #25D366;
+  --whatsapp-hover: #128C7E;
+  --star-gold: #ffc107;
+  
+  --radius: 20px;
+  --radius-lg: 24px;
+  --transition: 0.3s ease;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+/* =========================
+   SECTION LAYOUT
+========================= */
+.testimonials-section {
+  width: 100%;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, var(--bg-dark) 0%, #1a1a2e 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonials-section::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(245, 210, 122, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.testimonials-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================
+   HEADER
+========================= */
+.testimonials-header {
+  text-align: center;
+  margin-bottom: 60px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-title {
+  font-size: clamp(28px, 4vw, 40px);
+  color: var(--text-light);
+  margin-bottom: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.section-subtitle {
+  font-size: clamp(16px, 2vw, 18px);
+  color: var(--text-muted);
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.aggregate-rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  padding: 12px 24px;
+  background: var(--bg-card);
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.star-rating {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 20px;
+}
+
+.star {
+  color: rgba(255, 255, 255, 0.3);
+  transition: color 0.2s;
+}
+
+.star.filled {
+  color: var(--star-gold);
+}
+
+.rating-label {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-left: 8px;
+}
+
+.rating-count {
+  font-size: 15px;
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+.write-review-link {
+  font-size: 14px;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.write-review-link:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+/* =========================
+   GRID LAYOUT
+========================= */
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 70px;
+}
+
+/* =========================
+   CARD DESIGN
+========================= */
+.testimonial-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius);
+  padding: 30px;
+  color: var(--text-light);
+  transition: var(--transition);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.6s ease forwards;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-8px);
+  background: var(--bg-card-hover);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-lg);
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Author Section */
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.author-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent);
+  flex-shrink: 0;
+}
+
+.author-avatar.placeholder {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--bg-dark);
+}
+
+.author-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.author-name {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-light);
+}
+
+.author-event {
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.author-location {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* Rating */
+.testimonial-rating {
+  margin-bottom: 18px;
+}
+
+/* Review Text */
+.testimonial-text {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin-bottom: 25px;
+  flex-grow: 1;
+  font-style: italic;
+}
+
+.testimonial-text::before,
+.testimonial-text::after {
+  content: "";
+  color: var(--accent);
+  font-size: 40px;
+  line-height: 1;
+  opacity: 0.6;
+}
+
+.testimonial-text::before {
+  display: block;
+  margin-bottom: -10px;
+}
+
+/* Inline CTA Button */
+.testimonial-cta {
+  background: transparent;
+  border: 1px solid var(--whatsapp);
+  color: var(--whatsapp);
+  padding: 12px 20px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.testimonial-cta:hover {
+  background: var(--whatsapp);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* =========================
+   BOTTOM CTA SECTION
+========================= */
+.testimonials-cta {
+  background: linear-gradient(135deg, rgba(245, 210, 122, 0.15) 0%, rgba(245, 210, 122, 0.05) 100%);
+  border: 1px solid rgba(245, 210, 122, 0.3);
+  border-radius: var(--radius-lg);
+  padding: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.cta-content h3 {
+  font-size: clamp(20px, 3vw, 26px);
+  color: var(--text-light);
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.cta-content p {
+  color: var(--text-muted);
+  font-size: 16px;
+  margin: 0;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.cta-primary {
+  background: var(--whatsapp);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cta-primary:hover {
+  background: var(--whatsapp-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+}
+
+.cta-secondary {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cta-secondary:hover {
+  background: rgba(245, 210, 122, 0.15);
+  transform: translateY(-2px);
+}
+
+/* =========================
+   FLOATING WHATSAPP BUTTON
+========================= */
+.whatsapp-float {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: var(--whatsapp);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 14px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 1000;
+  transition: var(--transition);
+  animation: pulse 2s infinite;
+}
+
+.whatsapp-float:hover {
+  transform: translateY(-3px);
+  background: var(--whatsapp-hover);
+  box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-icon {
+  font-size: 18px;
+}
+
+.whatsapp-text {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .whatsapp-text {
+    display: inline;
+  }
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+  70% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+@media (max-width: 1024px) {
+  .testimonials-section {
+    padding: 60px 20px;
+  }
+  
+  .testimonials-cta {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .cta-buttons {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .testimonial-card {
+    padding: 25px;
+  }
+  
+  .aggregate-rating {
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px 20px;
+  }
+  
+  .testimonials-cta {
+    padding: 25px 20px;
+  }
+  
+  .cta-buttons {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .cta-primary,
+  .cta-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .whatsapp-float {
+    bottom: 15px;
+    right: 15px;
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 26px;
+  }
+  
+  .section-subtitle {
+    font-size: 15px;
+  }
+  
+  .testimonial-text {
+    font-size: 15px;
+  }
+  
+  .author-name {
+    font-size: 16px;
+  }
+  
+  .author-event {
+    font-size: 13px;
+  }
+}
+
+/* =========================
+   ACCESSIBILITY
+========================= */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.testimonial-card:focus-within,
+.testimonial-cta:focus,
+.cta-primary:focus,
+.cta-secondary:focus,
+.whatsapp-float:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

@@ -3,14 +3,20 @@
 ========================= */
 :root {
   --bg-dark: #0b0b0b;
+  --bg-card: rgba(255, 255, 255, 0.06);
   --text-light: #ffffff;
   --text-muted: #cfcfcf;
   --text-dim: #aaaaaa;
-
+  
   --accent: #ffb347;
-
+  --accent-hover: #e69d3d;
+  --whatsapp: #25D366;
+  --whatsapp-hover: #128C7E;
+  
   --transition: 0.3s ease;
   --radius: 8px;
+  --radius-lg: 16px;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
 /* =========================
@@ -30,37 +36,168 @@
 .footer-container {
   max-width: 1200px;
   margin: auto;
-
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 40px;
+  position: relative;
+  z-index: 2;
 }
 
 /* =========================
-   LOGO
+   BRAND SECTION
 ========================= */
+.footer-brand {
+  grid-column: span 1;
+}
+
 .footer-logo {
   font-size: 28px;
   color: var(--accent);
   margin-bottom: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.footer-brand > p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin-bottom: 25px;
+}
+
+/* 🆕 NEW: Trust Badges */
+.trust-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.trust-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: var(--bg-card);
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 13px;
+  transition: var(--transition);
+}
+
+.trust-badge:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+.trust-icon {
+  font-size: 16px;
+}
+
+.trust-text {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* 🆕 NEW: Service Areas */
+.service-areas {
+  margin-bottom: 25px;
+}
+
+.service-areas h4 {
+  font-size: 14px;
+  color: var(--accent);
+  margin-bottom: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.areas-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.area-tag {
+  padding: 4px 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  font-size: 12px;
+  color: var(--text-muted);
+  transition: var(--transition);
+}
+
+.area-tag:hover {
+  background: var(--accent);
+  color: var(--bg-dark);
+  font-weight: 500;
+}
+
+/* 🆕 NEW: Prominent WhatsApp CTA */
+.footer-whatsapp-cta {
+  width: 100%;
+  background: var(--whatsapp);
+  color: white;
+  border: none;
+  padding: 16px 20px;
+  border-radius: var(--radius-lg);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.35);
+}
+
+.footer-whatsapp-cta:hover {
+  background: var(--whatsapp-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(37, 211, 102, 0.5);
+}
+
+.whatsapp-icon {
+  font-size: 22px;
+}
+
+.cta-subtext {
+  font-size: 11px;
+  font-weight: 400;
+  opacity: 0.95;
 }
 
 /* =========================
-   HEADINGS
+   SECTIONS COMMON
 ========================= */
 .footer-section h3 {
   font-size: 20px;
-  margin-bottom: 15px;
+  margin-bottom: 18px;
   color: var(--accent);
+  font-weight: 600;
 }
 
-/* =========================
-   TEXT
-========================= */
 .footer-section p {
   font-size: 15px;
   line-height: 1.6;
   color: var(--text-muted);
+}
+
+.footer-section address p {
+  margin: 8px 0;
+  font-style: normal;
+}
+
+.footer-section address a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.footer-section address a:hover {
+  color: var(--accent);
 }
 
 /* =========================
@@ -69,10 +206,11 @@
 .footer-section ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .footer-section ul li {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .footer-section ul li a {
@@ -80,16 +218,15 @@
   color: var(--text-muted);
   position: relative;
   transition: var(--transition);
+  font-size: 15px;
 }
 
-/* Hover + Focus (Accessibility) */
 .footer-section ul li a:hover,
 .footer-section ul li a:focus {
   color: var(--accent);
   outline: none;
 }
 
-/* underline animation */
 .footer-section ul li a::after {
   content: "";
   position: absolute;
@@ -107,37 +244,176 @@
 }
 
 /* =========================
+   CONSULTATION BOX
+========================= */
+.consultation-box {
+  margin-top: 20px;
+  padding: 18px;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.consultation-box h4 {
+  font-size: 15px;
+  color: var(--accent);
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.consultation-box p {
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.consultation-btn {
+  width: 100%;
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 10px 16px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.consultation-btn:hover {
+  background: var(--accent);
+  color: var(--bg-dark);
+  transform: translateY(-2px);
+}
+
+/* =========================
    SOCIAL ICONS
 ========================= */
 .social-icons {
   display: flex;
-  gap: 15px;
-  margin-top: 10px;
+  gap: 12px;
+  margin-bottom: 25px;
 }
 
 .social-icons a {
-  font-size: 20px;
-  width: 40px;
-  height: 40px;
-
+  font-size: 18px;
+  width: 42px;
+  height: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
-
   border-radius: 50%;
-  background: #1a1a1a;
+  background: var(--bg-card);
   color: var(--text-light);
-
   transition: var(--transition);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Hover + Focus */
 .social-icons a:hover,
 .social-icons a:focus {
   background: var(--accent);
-  color: black;
+  color: var(--bg-dark);
   transform: translateY(-4px);
   outline: 2px solid var(--accent);
+}
+
+/* =========================
+   NEWSLETTER BOX
+========================= */
+.newsletter-box {
+  padding: 18px;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.newsletter-box h4 {
+  font-size: 15px;
+  color: var(--accent);
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.newsletter-box p {
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-light);
+  font-size: 14px;
+  transition: var(--transition);
+}
+
+.newsletter-form input:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.newsletter-form input::placeholder {
+  color: var(--text-dim);
+}
+
+.newsletter-btn {
+  background: var(--accent);
+  color: var(--bg-dark);
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.newsletter-btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+.newsletter-note {
+  font-size: 11px;
+  color: var(--text-dim);
+  margin: 0;
+}
+
+.signup-success {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: rgba(37, 211, 102, 0.15);
+  border: 1px solid var(--whatsapp);
+  border-radius: 8px;
+  color: var(--whatsapp);
+  font-size: 13px;
+  font-weight: 500;
+  animation: fadeUp 0.3s ease;
+}
+
+.success-icon {
+  font-size: 16px;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* =========================
@@ -145,11 +421,123 @@
 ========================= */
 .footer-bottom {
   text-align: center;
-  margin-top: 40px;
-  padding-top: 20px;
+  margin-top: 50px;
+  padding-top: 25px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 14px;
   color: var(--text-dim);
+  position: relative;
+}
+
+.bottom-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.bottom-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.bottom-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 13px;
+  transition: var(--transition);
+}
+
+.bottom-links a:hover {
+  color: var(--accent);
+}
+
+.bottom-links span {
+  opacity: 0.5;
+}
+
+/* 🆕 NEW: Back to Top Button */
+.back-to-top {
+  position: absolute;
+  bottom: 100%;
+  right: 20px;
+  transform: translateY(20px);
+  
+  background: var(--accent);
+  color: var(--bg-dark);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: var(--shadow);
+  z-index: 10;
+  
+  animation: slideUp 0.3s ease forwards;
+}
+
+@keyframes slideUp {
+  to { transform: translateY(0); }
+}
+
+.back-to-top:hover {
+  background: var(--accent-hover);
+  transform: translateY(-3px);
+}
+
+.back-to-top-text {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .back-to-top-text {
+    display: inline;
+  }
+}
+
+/* 🆕 NEW: Mobile Sticky CTA Bar */
+.mobile-footer-cta {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 12px 20px;
+  background: rgba(11, 11, 11, 0.98);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 9999;
+  backdrop-filter: blur(10px);
+}
+
+.mobile-whatsapp-btn {
+  width: 100%;
+  background: var(--whatsapp);
+  color: white;
+  border: none;
+  padding: 14px 20px;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  transition: var(--transition);
+}
+
+.mobile-whatsapp-btn:hover {
+  background: var(--whatsapp-hover);
+  transform: translateY(-2px);
 }
 
 /* =========================
@@ -160,37 +548,153 @@
   position: absolute;
   top: -80px;
   left: -80px;
-
   width: 220px;
   height: 220px;
-
-  background: radial-gradient(circle, rgba(255, 179, 71, 0.2), transparent);
-
-  /* PERFORMANCE FIX */
+  background: radial-gradient(circle, rgba(255, 179, 71, 0.15), transparent 70%);
   filter: blur(60px);
-  opacity: 0.6;
-
+  opacity: 0.5;
   animation: glowMove 12s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 1;
 }
 
 @keyframes glowMove {
-  from {
-    transform: translate(0, 0);
+  from { transform: translate(0, 0); }
+  to { transform: translate(120px, 80px); }
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+@media (max-width: 1024px) {
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
   }
-  to {
-    transform: translate(120px, 80px);
+  
+  .footer-brand {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 60px 20px 80px; /* Extra padding for mobile CTA bar */
+  }
+  
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+  
+  .footer-brand {
+    grid-column: span 1;
+  }
+  
+  .footer-logo {
+    font-size: 24px;
+  }
+  
+  .trust-badges {
+    justify-content: center;
+  }
+  
+  .areas-list {
+    justify-content: center;
+  }
+  
+  .footer-whatsapp-cta {
+    padding: 14px 16px;
+  }
+  
+  .newsletter-form {
+    flex-direction: column;
+  }
+  
+  .footer-bottom {
+    margin-top: 30px;
+  }
+  
+  .bottom-content {
+    gap: 8px;
+  }
+  
+  .bottom-links {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .back-to-top {
+    bottom: 90px; /* Above mobile CTA bar */
+    right: 15px;
+    padding: 10px 16px;
+  }
+  
+  /* Show mobile sticky CTA */
+  .mobile-footer-cta {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-section h3 {
+    font-size: 18px;
+  }
+  
+  .footer-section p,
+  .footer-section ul li a {
+    font-size: 14px;
+  }
+  
+  .social-icons {
+    justify-content: center;
+  }
+  
+  .consultation-box,
+  .newsletter-box {
+    text-align: center;
+  }
+  
+  .footer-whatsapp-cta {
+    font-size: 14px;
+  }
+  
+  .cta-subtext {
+    font-size: 10px;
   }
 }
 
 /* =========================
-   RESPONSIVE
+   ACCESSIBILITY
 ========================= */
-@media (max-width: 768px) {
-  .footer {
-    padding: 60px 20px 20px;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
+}
 
-  .footer-logo {
-    font-size: 24px;
-  }
+.footer-section ul li a:focus,
+.social-icons a:focus,
+.consultation-btn:focus,
+.newsletter-btn:focus,
+.footer-whatsapp-cta:focus,
+.back-to-top:focus,
+.mobile-whatsapp-btn:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

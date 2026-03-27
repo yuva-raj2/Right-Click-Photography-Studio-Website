@@ -5,12 +5,14 @@ import Header from './Components/Header';
 import Footer from './Components/Footer';
 import Information from './Components/Information';
 import MyBookComponent from './Components/MyBookComponent';
+import Testimonials from './Components/Testimonials/Testimonials';
 function App() {
   return (
     <div>
       <NavBar/>
       <Header/>
       <Information/>
+      <Testimonials/>
       <MyBookComponent/>
       <Footer/>
        <div className='page-container'>
